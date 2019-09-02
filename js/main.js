@@ -24,7 +24,7 @@ function getMovies(searchText){
             output += `
             <div class="col-md-3">
             <div class="well text-center">
-              <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}">
+              <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}">
               <h5>${movie.title}</h5>
               <a onclick="movieSelected('${movie.id}')" class="btn btn-primary" href="#">Movie Details</a>
             </div>
@@ -37,4 +37,11 @@ function getMovies(searchText){
         console.log(err);
     });
     
+}
+
+// pass data from one page to another, Method session storage, it clears out when the browser is closed
+function movieSelected(id){
+    sessionStorage.setItem('movieId', id);
+    window.location = 'movie.html';
+    return false;
 }
